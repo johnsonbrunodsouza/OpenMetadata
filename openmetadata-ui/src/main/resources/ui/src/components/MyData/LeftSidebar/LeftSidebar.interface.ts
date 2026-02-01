@@ -19,6 +19,7 @@ export interface LeftSidebarItem {
   icon: SvgComponent;
   dataTestId: string;
   children?: Array<LeftSidebarItem>;
+  isExternal?: boolean;
 }
 
 export interface LeftSidebarItemProps {
@@ -29,5 +30,6 @@ export interface LeftSidebarItemProps {
     redirect_url?: string;
     icon: SvgComponent;
     isBeta?: boolean;
+    isExternal?: boolean;
   };
 }

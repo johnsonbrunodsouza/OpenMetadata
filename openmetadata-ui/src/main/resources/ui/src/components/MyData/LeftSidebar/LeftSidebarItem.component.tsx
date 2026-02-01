@@ -16,28 +16,48 @@ import { NavLink } from 'react-router-dom';
 import { LeftSidebarItemProps } from './LeftSidebar.interface';
 
 const LeftSidebarItem = ({
-  data: { title, redirect_url, dataTestId, isBeta },
+  data: { title, redirect_url, dataTestId, isBeta, isExternal },
 }: LeftSidebarItemProps) => {
   const { t } = useTranslation();
 
   return redirect_url ? (
-    <NavLink
-      className="left-panel-item left-panel-label no-underline"
-      data-testid={dataTestId}
-      to={{
-        pathname: redirect_url,
-      }}>
-      {t(title)}
+    isExternal ? (
+      <a
+        className="left-panel-item left-panel-label no-underline"
+        data-testid={dataTestId}
+        href={redirect_url}
+        rel="noopener noreferrer"
+        target="_blank">
+        {t(title)}
 
-      {isBeta && (
-        <Badge
-          className="service-beta-tag"
-          count={t('label.beta')}
-          size="small"
-          style={{ marginLeft: 8 }}
-        />
-      )}
-    </NavLink>
+        {isBeta && (
+          <Badge
+            className="service-beta-tag"
+            count={t('label.beta')}
+            size="small"
+            style={{ marginLeft: 8 }}
+          />
+        )}
+      </a>
+    ) : (
+      <NavLink
+        className="left-panel-item left-panel-label no-underline"
+        data-testid={dataTestId}
+        to={{
+          pathname: redirect_url,
+        }}>
+        {t(title)}
+
+        {isBeta && (
+          <Badge
+            className="service-beta-tag"
+            count={t('label.beta')}
+            size="small"
+            style={{ marginLeft: 8 }}
+          />
+        )}
+      </NavLink>
+    )
   ) : (
     <span
       className="left-panel-item left-panel-label p-0"

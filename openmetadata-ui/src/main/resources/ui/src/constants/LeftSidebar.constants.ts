@@ -152,6 +152,14 @@ export const SIDEBAR_LIST: Array<LeftSidebarItem> = [
         dataTestId: `app-bar-item-${SidebarItem.GLOSSARY}`,
       },
       {
+        key: 'idataobs-ui',
+        title: 'iDataObs UI',
+        redirect_url: 'http://localhost:3001',
+        icon: GlossaryIcon,
+        dataTestId: 'app-bar-item-idataobs-ui',
+        isExternal: true,
+      },
+      {
         key: ROUTES.TAGS,
         title: 'label.classification',
         redirect_url: ROUTES.TAGS,
